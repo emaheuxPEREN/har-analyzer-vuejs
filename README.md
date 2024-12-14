@@ -1,8 +1,8 @@
 <div align="center">
 <img width="60px" src="https://pts-project.org/android-chrome-512x512.png">
-<h1>[Repository name]</h1>
+<h1>Vue.js HAR analyzer</h1>
 <p>
-This repository contains the source code of [description]. 
+Dead simple Vue.js HAR analyzer.
 </p>
 <p>
 License: GPLv3
@@ -14,21 +14,20 @@ License: GPLv3
 </p>
 </div>
 
+## Project Setup
 
-## How to use this template
+```sh
+npm install
+```
 
-1. Delete all unnecessary folders and files depending on the type of project.
+### Compile and Hot-Reload for Development
 
-2. Specify the name of the package (Python and/or Debian) by replacing `[package_name]` in the files:
-* `./setup.py:6`
-* `./setup.py:11`
-* `./debian/rules:3`
-* `./debian/rules:19`
-* `./debian/control:1`
-* `./debian/control:12`
-* `./debian/control:14`
-* `./debian/copyright:2`
-* `./debian/copyright:4`
+```sh
+npm run dev
+```
 
-3. Specify the description of the package (Python and/or Debian) by replacing `[package_description]` in the file:
-* `./setup.py:10`
+### Compile and Minify for Production
+
+```sh
+npm run build
+```

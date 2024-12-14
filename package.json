@@ -1,0 +1,44 @@
+{
+  "name": "harweb",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "main": "./dist/harweb.umd.cjs",
+  "module": "./dist/harweb.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/harweb.js",
+      "require": "./dist/harweb.umd.cjs"
+    },
+    "./assets/style.scss": "./dist/style.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "@primevue/auto-import-resolver": "^4.2.2",
+    "@primevue/themes": "^4.2.2",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.2.2",
+    "tailwindcss": "^3.3.6",
+    "tailwindcss-primeui": "^0.3.4",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@primevue/auto-import-resolver": "^4.2.2",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "rollup": "^4.28.1",
+    "rollup-plugin-vue": "^6.0.0",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.4.10",
+    "vite-plugin-vue-devtools": "^7.5.4",
+    "vue-tsc": "^2.1.10"
+  }
+}
