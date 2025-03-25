@@ -11,8 +11,6 @@ function install (app: App) {
   }
 }
 
-import './assets/style.scss'
-
 export default { install }
 
 export * from './components'

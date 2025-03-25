@@ -1,28 +1,31 @@
 <script>
+import CopyBtn from "@/components/har/generic/CopyBtn.vue";
+
 export default {
+  components: {CopyBtn},
   props: ['entry']
 }
 </script>
 
 <template>
   <div class="my-2">
-    <ul class="list-none">
+    <ul class="list-unstyled">
       <li class="">
-        <span class="font-bold text-muted-color">Process: </span>
-        <span class="">{{ entry._stacktrace.process }}</span>
+        <span class="fw-bold text-unmuted">Process: </span>
+        <CopyBtn><span class="font-monospace">{{ entry._stacktrace.process }}</span></CopyBtn>
       </li>
       <li class="">
-        <span class="font-bold text-muted-color">PID: </span>
-        <span class="">{{ entry._stacktrace.pid }}</span>
+        <span class="fw-bold text-unmuted">PID: </span>
+        <CopyBtn><span class="">{{ entry._stacktrace.pid }}</span></CopyBtn>
       </li>
     </ul>
   </div>
-  <div class="h-[38rem] overflow-auto">
-    <ul class="list-none ps-2 text-sm">
+  <div>
+    <ul class="list-unstyled">
       <li class="" v-for="st in entry._stacktrace.stack">
         <span class="pi pi-microchip text-primary" v-if="st.isNative"></span>
         <span class="pi pi-code text-primary" v-else></span>
-        <span class="font-mono mx-1 text-muted-color">{{ st.str }}</span>
+        <span class="font-monospace mx-1 text-unmuted">{{ st.str }}</span>
       </li>
     </ul>
   </div>

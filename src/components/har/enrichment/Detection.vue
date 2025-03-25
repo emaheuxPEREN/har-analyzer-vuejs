@@ -42,7 +42,7 @@ export default {
       <Column expander style="width: 1rem"/>
       <Column field="type" header="" sortable>
         <template #header>
-          <span class="text-muted-color font-bold">Data category</span>
+          <span class="text-unmuted fw-bold">Data category</span>
         </template>
         <template #body="slotProps">
           <span class="text-primary">{{ slotProps.data.type }}</span>
@@ -50,50 +50,50 @@ export default {
       </Column>
       <Column field="count" header="" sortable>
         <template #header>
-          <span class="text-muted-color font-bold">Count</span>
+          <span class="text-unmuted fw-bold">Count</span>
         </template>
       </Column>
       <Column field="example" header="">
         <template #header>
-          <span class="text-muted-color font-bold">Value</span>
+          <span class="text-unmuted fw-bold">Value</span>
         </template>
         <template #body="slotProps">
-          <span class="font-mono text-muted-color">{{ slotProps.data.example }}</span>
+          <span class="font-monospace text-unmuted">{{ slotProps.data.example }}</span>
         </template>
       </Column>
       <template #expansion="slotProps">
         <div class="m-0 p-0 text-sm border-0">
           <DataTable :value="slotProps.data.details" size="small" class="">
-            <Column field="part" header="" class="w-1/6">
+            <Column field="part" header="" class="col-2">
               <template #header>
-                <span class="font-bold text-muted-color">Part</span>
+                <span class="fw-bold text-unmuted">Part</span>
               </template>
               <template #body="slotProps">
-                <span class="text-muted-color">{{ slotProps.data.part }}</span>
+                <span class="text-unmuted">{{ slotProps.data.part }}</span>
               </template>
             </Column>
-            <Column field="section" header="" class="w-1/6">
+            <Column field="section" header="" class="col-2">
               <template #header>
-                <span class="font-bold text-muted-color">Section</span>
+                <span class="fw-bold text-unmuted">Section</span>
               </template>
               <template #body="slotProps">
-                <span class="text-muted-color">{{ slotProps.data.section }}</span>
+                <span class="text-unmuted">{{ slotProps.data.section }}</span>
               </template>
             </Column>
-            <Column field="pointer" header="" class="w-2/6">
+            <Column field="pointer" header="" class="col-4">
               <template #header>
-                <span class="font-bold text-muted-color">Path</span>
+                <span class="fw-bold text-unmuted">Path</span>
               </template>
               <template #body="slotProps">
-                <samp class="text-muted-color">{{ slotProps.data.pointer }}</samp>
+                <samp class="text-unmuted">{{ slotProps.data.pointer }}</samp>
               </template>
             </Column>
-            <Column field="value" header="" class="w-2/6">
+            <Column field="value" header="" class="col-4">
               <template #header>
-                <span class="font-bold text-muted-color">Value</span>
+                <span class="fw-bold text-unmuted">Value</span>
               </template>
               <template #body="slotProps">
-                <samp class="text-muted-color">{{ slotProps.data.value }}</samp>
+                <samp class="text-unmuted">{{ slotProps.data.value }}</samp>
               </template>
             </Column>
           </DataTable>

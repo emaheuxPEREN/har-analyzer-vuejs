@@ -1,18 +1,17 @@
-import "./assets/style.scss";
+import 'bootstrap/dist/css/bootstrap.css';
 import "primeicons/primeicons.css";
 import {createApp} from 'vue';
 import App from '@/App.vue';
 import AppState from './plugins/appState.js';
 import Utils from './plugins/utils.js';
-import ThemeSwitcher from '@/components/ThemeSwitcher.vue';
 import PrimeVue from 'primevue/config';
-import Noir from "./presets/Noir.js";
+import aura from '@primevue/themes/aura';
 
 const app = createApp(App);
 app.use(PrimeVue, {
     ripple: true,
     theme: {
-        preset: Noir,
+        preset: aura,
         options: {
             prefix: 'p',
             darkModeSelector: '.p-dark',
@@ -23,7 +22,5 @@ app.use(PrimeVue, {
 
 app.use(AppState);
 app.use(Utils);
-
-app.component('ThemeSwitcher', ThemeSwitcher);
 
 app.mount('#app');

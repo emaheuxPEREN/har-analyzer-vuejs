@@ -7,11 +7,20 @@ function humanFileSize(size) {
     return `${value} ${'KMGTPEZY'[i - 1]}B`
 }
 
+async function copyToClipboard(content) {
+  try {
+    await navigator.clipboard.writeText(content);
+  } catch($e) {}
+}
+
 export default {
   install(app, options) {
     app.config.globalProperties.$humanFileSize = (size) => {
         return humanFileSize(size);
     }
+    app.config.globalProperties.$copyToClipboard = (size) => {
+        return copyToClipboard(size);
+    }
   },
-  humanFileSize,
+  humanFileSize, copyToClipboard,
 }

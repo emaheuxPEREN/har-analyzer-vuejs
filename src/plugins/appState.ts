@@ -1,7 +1,7 @@
 import {reactive} from 'vue';
 export default {
     install: (app) => {
-        const _appState = reactive({theme: 'Aura', darkTheme: false});
+        const _appState = reactive({});
         app.config.globalProperties.$appState = _appState;
     }
 };

@@ -1,16 +1,23 @@
 <script>
+import CopyBtn from "@/components/har/generic/CopyBtn.vue";
+
 export default {
+  components: {CopyBtn},
   props: ['entry']
 }
 </script>
 
 <template>
-  <ul class="list-none">
+
+  <ul class="list-unstyled">
     <li class="" v-for="st in entry.headers">
-      <span class="font-bold text-muted-color">{{ st.name }}</span>:
-      <span class="">{{ st.value }}</span>
+      <CopyBtn>
+        <span class="fw-bold">{{ st.name }}</span>:
+        <span class="text-break">{{ st.value }}</span>
+      </CopyBtn>
     </li>
   </ul>
+
 </template>
 
 <style scoped>

@@ -15,30 +15,30 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-row w-full text-nowrap">
-    <div class="basis-1/6">
-      <div>
-        <Tag class="mx-1" :value="entry.request.method" severity="danger" v-if="entry.response.status>=400"/>
-        <Tag class="mx-1" :value="entry.request.method" severity="success" v-else/>
+  <div class="text-wrap">
+    <div class="d-flex flex-row">
+      <div class="p-0 mx-1">
+        <Tag class="" :value="entry.request.method" severity="danger" v-if="entry.response.status>=400"/>
+        <Tag class="" :value="entry.request.method" severity="success" v-else/>
       </div>
-      <div class="text-sm mx-1">
-        <span class="pi pi-cloud-download text-muted-color" style="font-size: 0.7rem"></span>
-        <span class="mx-1 text-muted-color">
+      <div class="p-1">
+        <span class="pi pi-cloud-download text-unmuted"></span>
+        <span class="ms-1 text-unmuted">
           {{ $humanFileSize(entry.request.bodySize + entry.response.bodySize) }}
         </span>
       </div>
-    </div>
-    <div class="">
-      <div class="mx-1 text-primary">
-        <span class="pi pi-globe" style="font-size: 0.8rem"></span>
+      <div class="p-1 text-primary">
+        <span class="pi pi-globe"></span>
         {{ hostname }}
       </div>
-      <div class="mx-1 text-muted-color font-mono" v-if="entry.request._stacktrace">
-        <span class="pi pi-wave-pulse" style="font-size: 0.7rem"></span>
+    </div>
+    <div class="d-flex flex-row ">
+      <div class="p-1 text-unmuted font-monospace" v-if="entry.request._stacktrace">
+        <span class="pi pi-wave-pulse" ></span>
         <span class="mx-1 text-sm">{{ entry.request._stacktrace.process }}</span>
       </div>
-      <div class="mx-1 text-muted-color font-mono" v-else>
-        <span class="pi pi-server" style="font-size: 0.7rem"></span>
+      <div class="p-1 text-unmuted font-monospace" v-else>
+        <span class="pi pi-server" ></span>
         <span class="mx-1 text-sm">{{ entry.serverIPAddress }}</span>
       </div>
     </div>
