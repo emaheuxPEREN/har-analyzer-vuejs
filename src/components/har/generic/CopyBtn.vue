@@ -29,6 +29,14 @@ export default {
 
 <template>
   <span ref="inner"><slot/></span>
-  <Button class="p-0" v-if="inlineContent" icon="pi pi-copy" variant="link" aria-label="Copy" size="small" @click="$copyToClipboard(data)" :label="text"/>
-  <Button v-else icon="pi pi-copy" aria-label="Copy" size="small" @click="$copyToClipboard(data)" :label="text"/>
+  <Button v-if="inlineContent"
+          size="small" class="p-0"
+          icon="pi pi-copy" variant="link"
+          aria-label="Copy to clipboard" title="Copy to clipboard"
+          @click="$copyToClipboard(data)" :label="text"/>
+  <Button v-else
+          size="small"
+          icon="pi pi-copy"
+          aria-label="Copy to clipboard" title="Copy to clipboard"
+          @click="$copyToClipboard(data)" :label="text"/>
 </template>

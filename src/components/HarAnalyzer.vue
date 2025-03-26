@@ -1,5 +1,4 @@
 <script setup>
-import {ref} from "vue";
 import CommunicationListEntry from "@/components/har/CommunicationListEntry.vue";
 import RequestResponse from "@/components/har/RequestResponse.vue";
 import GeneralInfo from "@/components/har/GeneralInfo.vue";
@@ -10,21 +9,44 @@ import CommunicationLine from "@/components/har/partials/CommunicationLine.vue";
 import SecureHttp from "@/components/har/partials/SecureHttp.vue";
 import Detection from "@/components/har/enrichment/Detection.vue";
 import {Tabs, Tab, TabPanels, TabPanel, TabList, Splitter, SplitterPanel, Tag, Listbox} from "primevue";
-
-const selectedEntry = ref();
 </script>
 
 <script>
+const loadDataSource = async (url) => {
+  const response = await fetch(url);
+  const json = await response.json();
+  return json.log.entries;
+};
+
 export default {
-  props: ['entries'],
+  props: ['dataSrc'],
+  expose: ['setEntries'],
+  data() {
+    return {
+      selectedEntry: null,
+      entries: [],
+    }
+  },
+  mounted() {
+    console.log('mounted', this, this.dataSrc, this.$el);
+    if (this.dataSrc) {
+      const url = this.dataSrc;
+      loadDataSource(url).then(this.setEntries);
+    }
+  },
+  methods: {
+    setEntries(entriesArray) {
+      this.entries.splice(0, this.entries.length, ...entriesArray);
+    },
+  }
 }
 </script>
 
 <template>
-  <div class="p-2 items-center justify-center h-100">
+  <div class="har-analyzer p-2 items-center justify-center h-100">
     <Splitter class="h-100">
       <SplitterPanel class="flex p-0 h-100" :size="33" :minSize="25">
-        <Listbox v-model="selectedEntry" :options="entries" optionLabel="request" scrollHeight="100%" class="h-100" :striped=true>
+        <Listbox v-model="selectedEntry" :options="entries" optionLabel="request" scrollHeight="100%" class="h-100 no-border" :striped=true>
           <template #option="slotProps">
             <CommunicationListEntry :entry="slotProps.option"></CommunicationListEntry>
           </template>

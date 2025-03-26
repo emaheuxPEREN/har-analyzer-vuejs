@@ -7,12 +7,13 @@ function install (app: App) {
   app.use(AppState);
   app.use(Utils);
   for (const key in components) {
-    app.component(key, components[key])
+    app.component(key, components[key]);
   }
 }
+
+import './assets/style.scss';
 
 export default { install }
 
 export * from './components'
 export * from './plugins'
-export * from './presets'
