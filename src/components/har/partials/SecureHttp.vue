@@ -4,16 +4,21 @@ import {Tag} from "primevue";
 
 <script>
 export default {
-  props: ['url'],
+  props: ['request'],
   computed: {
-    isSecured: function() {
-      return this.url.startsWith('https://');
+    isSecured() {
+      return this.request.url.startsWith('https://');
+    },
+    isData() {
+      return this.request.url.startsWith('data:');
     }
   }
 }
 </script>
 
 <template>
-  <Tag class="me-1" icon="pi pi-shield" :value="'HTTPS'" severity="success" v-if="isSecured"/>
+  <Tag class="me-1" :value="request.httpVersion" severity="info" v-if="request.httpVersion"/>
+  <Tag class="me-1" icon="pi pi-shield" :value="'DATA'" severity="warn" v-if="isData"/>
+  <Tag class="me-1" icon="pi pi-shield" :value="'HTTPS'" severity="success" v-else-if="isSecured"/>
   <Tag class="me-1" icon="pi pi-shield" :value="'HTTP'" severity="danger" v-else/>
 </template>

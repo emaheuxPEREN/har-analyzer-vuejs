@@ -10,19 +10,19 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "harweb",
-      formats: ['es'],
-      fileName: (format) => `harweb.${format}.js`,
+      name: "HarAnalyzerVue",
+      //fileName: (format) => `${name}.${format}.js`,
     },
     rollupOptions: {
       external: [
         'vue',
-        /primevue\/.+/
+        /primevue\/.+/,
+        '@primeuix/themes',
       ],
       output: {
         exports: 'named',
         globals: {
-          'vue': 'Vue',
+          vue: 'Vue',
         },
       },
     },
@@ -31,5 +31,6 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+    dedupe: ['vue', /primevue\/.+/],
   },
 })

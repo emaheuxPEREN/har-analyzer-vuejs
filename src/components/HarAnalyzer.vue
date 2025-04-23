@@ -28,7 +28,6 @@ export default {
     }
   },
   mounted() {
-    console.log('mounted', this, this.dataSrc, this.$el);
     if (this.dataSrc) {
       const url = this.dataSrc;
       loadDataSource(url).then(this.setEntries);
@@ -52,7 +51,7 @@ export default {
           </template>
         </Listbox>
       </SplitterPanel>
-      <SplitterPanel class="flex p-4  overflow-auto" :size="75" v-model="selectedEntry">
+      <SplitterPanel class="flex p-4 overflow-auto" :size="75" v-model="selectedEntry">
         <div class="h-100" v-if="selectedEntry">
           <div class="">
             <div class="text-wrap text-primary">
@@ -62,8 +61,7 @@ export default {
             <div class="text-wrap my-2">
               <HttpMethod v-model:method="selectedEntry.request.method" v-model:status="selectedEntry.response.status"/>
               <HttpStatus v-model:status="selectedEntry.response.status"/>
-              <Tag class="me-1" :value="selectedEntry.request.httpVersion" severity="info"/>
-              <SecureHttp :url="selectedEntry.request.url"/>
+              <SecureHttp :request="selectedEntry.request"/>
               <TotalBodySize v-model:entry="selectedEntry"/>
               <Tag class="me-1" icon="pi pi-stopwatch" :value="selectedEntry.time+' ms'" severity="secondary"/>
             </div>
@@ -107,6 +105,10 @@ export default {
               </TabPanel>
             </TabPanels>
           </Tabs>
+        </div>
+        <div v-else>
+          <span class="pi pi-arrow-left text-muted"></span>
+          <span class="ms-2 text-muted">Please select an entry to explore transaction details.</span>
         </div>
       </SplitterPanel>
     </Splitter>

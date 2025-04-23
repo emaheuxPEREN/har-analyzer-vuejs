@@ -8,19 +8,17 @@ function humanFileSize(size) {
 }
 
 async function copyToClipboard(content) {
-  try {
-    await navigator.clipboard.writeText(content);
-  } catch($e) {}
+  await navigator.clipboard.writeText(content);
 }
 
 export default {
   install(app, options) {
     app.config.globalProperties.$humanFileSize = (size) => {
         return humanFileSize(size);
-    }
-    app.config.globalProperties.$copyToClipboard = (size) => {
-        return copyToClipboard(size);
-    }
+    };
+    app.config.globalProperties.$copyToClipboard = async (content) => {
+        await copyToClipboard(content);
+    };
   },
   humanFileSize, copyToClipboard,
 }

@@ -1,6 +1,5 @@
 <script setup>
-import {Card} from "primevue";
-import ButtonGroup from 'primevue/buttongroup';
+import {ButtonGroup, Card} from "primevue";
 import CopyBtn from "@/components/har/generic/CopyBtn.vue";
 </script>
 

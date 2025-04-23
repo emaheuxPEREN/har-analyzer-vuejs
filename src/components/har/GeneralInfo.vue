@@ -31,7 +31,8 @@ export default {
     </li>
     <li>
       <span class="text-unmuted fw-bold">Remote IP</span>:
-      <CopyBtn>{{ entry.serverIPAddress }}</CopyBtn>
+      <span class="text-danger" v-if="entry.response.bodySize < 0">DNS request blocked</span>
+      <CopyBtn v-else-if="entry.serverIPAddress">{{ entry.serverIPAddress }}</CopyBtn>
     </li>
     <li v-if="entry._communityId">
       <span class="text-unmuted fw-bold">Community ID</span>:

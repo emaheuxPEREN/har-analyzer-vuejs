@@ -1,28 +1,27 @@
 {
-  "name": "harweb",
+  "name": "har-analyzer-vue",
   "version": "0.0.1",
   "type": "module",
   "files": [
     "src",
     "dist"
   ],
-  "main": "./dist/harweb.umd.cjs",
-  "module": "./dist/harweb.es.js",
+  "main": "./dist/har-analyzer-vue.umd.cjs",
+  "module": "./dist/har-analyzer-vue.js",
   "exports": {
     ".": {
-      "import": "./dist/harweb.js",
-      "require": "./dist/harweb.umd.cjs"
+      "import": "./dist/har-analyzer-vue.js",
+      "require": "./dist/har-analyzer-vue.umd.cjs"
     },
-    "./assets/style.scss": "./dist/style.css"
+    "./assets/style.scss": "./dist/har-analyzer-vue.css"
   },
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host 0.0.0.0"
   },
   "peerDependencies": {
-    "@primevue/auto-import-resolver": "^4.2.2",
-    "@primevue/themes": "^4.2.2",
+    "@primeuix/themes": "^1.0.3",
     "bootstrap": "^5.3.3",
     "primeicons": "^7.0.0",
     "primevue": "^4.2.2",
