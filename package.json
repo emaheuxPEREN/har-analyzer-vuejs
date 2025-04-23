@@ -7,7 +7,7 @@
   "homepage": "https://github.com/PiRogueToolSuite/har-analyzer-vuejs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PiRogueToolSuite/har-analyzer-vuejs.git"
+    "url": "git+https://github.com/PiRogueToolSuite/har-analyzer-vuejs.git"
   },
   "files": [
     "src",
@@ -48,6 +48,5 @@
     "vite-plugin-vue-devtools": "^7.5.4",
     "vue-tsc": "^2.1.10"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
