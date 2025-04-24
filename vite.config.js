@@ -16,7 +16,8 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'vue',
-        /primevue\/.+/,
+        'primevue',
+        'primevue/config',
         '@primeuix/themes',
       ],
       output: {

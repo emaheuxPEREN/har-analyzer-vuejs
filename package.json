@@ -1,6 +1,6 @@
 {
   "name": "har-analyzer-vue",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "description": "Load and view HAR dump within a nice and clean Primevue component",
   "license": "GPL-3.0",
