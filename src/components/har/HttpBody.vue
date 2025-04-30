@@ -6,7 +6,7 @@ export default {
   props: ['entry', 'body'],
   computed: {
     decodedContent: function () {
-      const requestBody = this.body.text;
+      const requestBody = this.body?.text;
       let parsedBody = requestBody;
       try {
         const d = JSON.parse(requestBody);
@@ -43,11 +43,11 @@ export default {
     <ul class="my-2 list-unstyled">
       <li>
         <span class="fw-bold text-unmuted">Mimetype: </span>
-        <span class="font-monospace">{{ body.mimeType }}</span>
+        <span class="font-monospace">{{ body?.mimeType }}</span>
       </li>
       <li v-if="body.encoding">
         <span class="fw-bold text-unmuted">Encoding: </span>
-        <span class="font-monospace">{{ body.encoding }}</span>
+        <span class="font-monospace">{{ body?.encoding }}</span>
       </li>
     </ul>
     <div v-if="decodedContent" class="mt-4">

@@ -14,7 +14,7 @@ export default {
       return this.entry.response.bodySize < 0;
     },
     isDataUrl() {
-      return !('connection' in this.entry) && this.responseSize > 0;
+      return this.entry.request?.url?.startsWith('data:');
     },
     responseSize() {
       return this.entry.response?.bodySize || this.entry.response?.content?.size || 0;
@@ -42,7 +42,7 @@ export default {
       </div>
       <div class="p-1 text-primary" v-if="isDataUrl">
         <span class="pi pi-file"></span>
-        local page
+        local content
       </div>
       <div class="p-1 text-primary" v-else>
         <span class="pi pi-globe"></span>

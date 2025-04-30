@@ -21,10 +21,10 @@ export default {
         Headers
         <Badge :value="$humanFileSize(entry.headersSize)" severity="secondary" size="small"></Badge>
       </Tab>
-      <Tab value="1" v-if="entry.bodySize>0">
+      <Tab value="1" v-if="entry.bodySize>0 || body?.size > 0">
         <span class="pi pi-file"></span>
         Body
-        <Badge :value="$humanFileSize(entry.bodySize)" severity="secondary" size="small"></Badge>
+        <Badge :value="$humanFileSize(body?._size || body?.size)" severity="secondary" size="small"></Badge>
       </Tab>
       <Tab value="2" v-if="entry._stacktrace">
         <span class="pi pi-sitemap"></span>
@@ -39,7 +39,7 @@ export default {
       <TabPanel value="0">
         <HttpHeaders :entry="entry"/>
       </TabPanel>
-      <TabPanel value="1" v-if="entry.bodySize>0">
+      <TabPanel value="1" v-if="entry.bodySize>0 || body?.size > 0">
         <HttpBody :entry="entry" :body="body"/>
       </TabPanel>
       <TabPanel value="2" v-if="entry._stacktrace">

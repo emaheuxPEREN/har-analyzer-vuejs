@@ -37,6 +37,11 @@ export default {
     setEntries(entriesArray) {
       this.entries.splice(0, this.entries.length, ...entriesArray);
     },
+  },
+  computed: {
+    isDataUrl() {
+      return this.selectedEntry?.request?.url?.startsWith('data:');
+    },
   }
 }
 </script>
@@ -55,8 +60,14 @@ export default {
         <div class="h-100" v-if="selectedEntry">
           <div class="">
             <div class="text-wrap text-primary">
-              <span class="pi pi-globe" style="font-size: 1rem"></span>
-              <span class="mx-2 font-monospace">{{ selectedEntry.request.url }}</span>
+              <div v-if="isDataUrl">
+                <span class="pi pi-file" style="font-size: 1rem"></span>
+                <span class="mx-2 font-monospace">local content</span>
+              </div>
+              <div v-else>
+                <span class="pi pi-globe" style="font-size: 1rem"></span>
+                <span class="mx-2 font-monospace">{{ selectedEntry.request.url }}</span>
+              </div>
             </div>
             <div class="text-wrap my-2">
               <HttpMethod v-model:method="selectedEntry.request.method" v-model:status="selectedEntry.response.status"/>
