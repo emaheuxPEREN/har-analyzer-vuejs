@@ -79,9 +79,17 @@ export default {
         <span class="pi pi-code" ></span>
         <span class="mx-1 text-sm">local script</span>
       </div>
+      <div class="p-1 text-unmuted font-monospace" v-else-if="isAborted">
+        <span class="pi pi-server" ></span>
+        <span class="mx-1 text-sm">Unavailable</span>
+      </div>
       <div class="p-1 text-unmuted font-monospace" v-else-if="entry.serverIPAddress">
         <span class="pi pi-server" ></span>
         <span class="mx-1 text-sm">{{ entry.serverIPAddress }}</span>
+      </div>
+      <div class="p-1 text-unmuted font-monospace" v-else>
+        <span class="pi pi-exclamation-circle" ></span>
+        <span class="mx-1 text-sm">Unsupported source</span>
       </div>
     </div>
   </div>
