@@ -39,7 +39,7 @@ export default {
     <li>
       <span class="text-unmuted fw-bold">Remote IP</span>:
       <CopyBtn v-if="entry.serverIPAddress">{{ entry.serverIPAddress }}</CopyBtn>
-      <span class="text-danger" v-else>unavailable</span>
+      <span class="text-danger" v-else>Unavailable</span>
     </li>
     <li v-if="entry._communityId">
       <span class="text-unmuted fw-bold">Community ID</span>:
