@@ -1,13 +1,14 @@
-import {fileURLToPath, URL} from 'node:url'
-import {defineConfig} from 'vite'
-import {resolve} from "path";
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import { resolve } from "path";
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+  base: '',
   plugins: [
     vue()
   ],
-  build: {
+  /*build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "HarAnalyzerVue",
@@ -24,10 +25,12 @@ export default defineConfig({
         exports: 'named',
         globals: {
           vue: 'Vue',
+          primevue: 'PrimeVue',
+          'primevue/config': 'PrimeVueConfig',
         },
       },
     },
-  },
+  },*/
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
