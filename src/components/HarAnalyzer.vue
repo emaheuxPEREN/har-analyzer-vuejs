@@ -2,6 +2,7 @@
 import CommunicationListEntry from "@/components/har/CommunicationListEntry.vue";
 import RequestResponse from "@/components/har/RequestResponse.vue";
 import GeneralInfo from "@/components/har/GeneralInfo.vue";
+import Code from "@/components/har/partials/Code.vue";
 import HttpMethod from "@/components/har/partials/HttpMethod.vue";
 import HttpStatus from "@/components/har/partials/HttpStatus.vue";
 import TotalSize from "@/components/har/partials/TotalSize.vue";
@@ -101,7 +102,8 @@ export default {
               </div>
             </div>
             <div class="text-wrap my-2">
-              <Tag class="me-1 font-monospace" icon="pi pi-book" :value="selectedEntry._ogreCrumbs.recipe_id" severity="warn" v-if="selectedEntry._ogreCrumbs"/>
+              <Tag class="me-1 font-monospace" icon="pi pi-book" :value="selectedEntry._ogreCrumbs.recipe_id" severity="danger" v-if="selectedEntry._ogreCrumbs?.error_tb"/>
+              <Tag class="me-1 font-monospace" icon="pi pi-book" :value="selectedEntry._ogreCrumbs.recipe_id" severity="warn" v-else-if="selectedEntry._ogreCrumbs"/>
               <HttpMethod v-model:method="selectedEntry.request.method" v-model:status="selectedEntry.response.status"/>
               <HttpStatus v-model:status="selectedEntry.response.status"/>
               <SecureHttp :request="selectedEntry.request"/>
@@ -141,12 +143,15 @@ export default {
                 </div>
               </TabPanel>
               <TabPanel value="3" v-if="selectedEntry._ogreCrumbs">
-                <div class="m-0" v-if="Object.keys(selectedEntry._ogreCrumbs.detected_data).length">
-                  <Detection
-                    v-model:ogre="selectedEntry._ogreCrumbs"
-                    class=""></Detection>
+                <div class="my-3 mx-3 text-muted" v-if="selectedEntry._ogreCrumbs.error_tb">
+                  <Code title="Ogre decoding error" :toggleable=false :content="selectedEntry._ogreCrumbs.error_tb"></Code>
                 </div>
-                <div class="my-3 mx-3 text-muted" v-else>No data identified with current rules &hellip;</div>
+                <div class="my-3 mx-3 text-muted" v-else-if="Object.keys(selectedEntry._ogreCrumbs.detected_data).length == 0">
+                  No data identified with current rules &hellip;
+                </div>
+                <div class="m-0" v-else>
+                  <Detection v-model:ogre="selectedEntry._ogreCrumbs" class=""></Detection>
+                </div>
               </TabPanel>
             </TabPanels>
           </Tabs>
