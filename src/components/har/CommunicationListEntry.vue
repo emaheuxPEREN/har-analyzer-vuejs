@@ -45,7 +45,8 @@ export default {
   <div style="white-space: nowrap; overflow-x: hidden;">
     <div class="d-flex flex-row">
       <div class="p-0" style="vertical-align: sub;" v-if="entry._ogreCrumbs">
-        <img src="/src/assets/ogre_logo_CC_Lima_Studio.svg" height="20"/>
+        <img src="/src/assets/ogre_logo_CC_Lima_Studio.svg" height="20" style="filter: hue-rotate(200deg);" v-if="entry._ogreCrumbs.error_tb" />
+        <img src="/src/assets/ogre_logo_CC_Lima_Studio.svg" height="20" v-else />
       </div>
       <div class="p-0 mx-1">
         <Tag class="" :value="entry.request.method" severity="danger" v-if="isAborted || entry.response.status>=400" />
