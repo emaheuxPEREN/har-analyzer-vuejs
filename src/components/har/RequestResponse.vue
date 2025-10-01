@@ -11,10 +11,10 @@ export default {
   props: ['entry', 'body'],
   computed: {
     bodySize() {
-      return this.entry._content?.size ?? this.body?._size ?? this.body?.size ?? this.entry.bodySize ?? 0;
+      return Math.max(0, this.entry._content?.size ?? this.body?._size ?? this.body?.size ?? this.entry.bodySize ?? 0);
     },
     defaultTabId() {
-      return this.bodySize > 0 ? '1' : this.entry.headersSize > 0 ? '0' : null;
+      return this.bodySize > 0 ? '1' : this.entry.headers.length > 0 ? '0' : null;
     }
   }
 }
@@ -23,7 +23,7 @@ export default {
 <template>
   <Tabs :value="defaultTabId">
     <TabList>
-      <Tab value="0" v-if="entry.headersSize > 0">
+      <Tab value="0" v-if="entry.headers.length > 0">
         <span class="pi pi-list"></span>
         Headers
         <Badge :value="$humanFileSize(entry.headersSize)" severity="secondary" size="small"></Badge>
@@ -43,7 +43,7 @@ export default {
       </Tab>
     </TabList>
     <TabPanels>
-      <TabPanel value="0" v-if="entry.headersSize > 0">
+      <TabPanel value="0" v-if="entry.headers.length > 0">
         <HttpHeaders :headers="entry.headers"/>
       </TabPanel>
       <TabPanel value="1" v-if="bodySize > 0">

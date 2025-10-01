@@ -7,13 +7,13 @@ export default {
   props: ['entry'],
   computed: {
     headersSize() {
-      return this.entry.request.headersSize + (this.entry.response?.headersSize ?? 0);
+      return Math.max(0, this.entry.request.headersSize) + Math.max(0, this.entry.response?.headersSize ?? 0);
     },
     requestBodySize() {
       return this.entry.request._content?.size ?? this.entry.request.postData?._size ?? this.entry.request.bodySize ?? 0;
     },
     responseBodySize() {
-      return this.entry.response?.content?.size ?? this.entry.response?.bodySize ?? 0;
+      return Math.max(0, this.entry.response?.content?.size ?? this.entry.response?.bodySize ?? 0);
     },
   },
 }
